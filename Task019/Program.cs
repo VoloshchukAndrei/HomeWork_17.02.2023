@@ -1,35 +1,68 @@
-﻿Console.Write("Определение палиндрома, ведите число: ");
+﻿//Console.Clear();
+
+Console.Write("Определение палиндрома, ведите число: ");
 int number = int.Parse(Console.ReadLine()!);
 int N = number;
+int size = Quantity(N);
 int i = 0;
-int count = 0;
+int j = size - 1;
+int[] array = Coup(N);
 
-int[] result = new int [N];
+//Console.WriteLine($"[{String.Join(",", array)}]");
 
-for (int j = 0; N >= 1; i++)
+while (i < size / 2)
 {
-    result[j] = N % 10;
-    N = N / 10;
-    j++;
-    count++;
+    if (array[i] == array[j])
+    {
+        i++;
+        j--;
+    }
+    else
+    {
+        Console.WriteLine($"Число: {number}, не является палиндромом");
+        return;
+    }
+
+}
+Console.WriteLine($"Число: {number}, является палиндромом");
+
+int Quantity(int N)
+{
+    int count = 0;
+    if (N < 1)
+    {
+        N *= (-1);
+    }
+    while (N >= 1)
+    {
+        N = N / 10;
+        count++;
+    }
+    return count;
 }
 
-for (int j = 0; j < count; j++)
+int[] ZeroOneArray (int N)
 {
-    Console.Write($"{result[j]}");
+    int[] result = new int[Quantity(N)];
+    for (int i = 0; N >= 1; i++)
+    {
+        result[i] = N % 10;
+        N = N / 10;
+    }
+       return result;
 }
 
-//int number1 = (number / 10000);
-//int number2 = (number / 1000) % 10;
-//int number3 = (number / 100) % 10;
-//int number4 = (number / 10) % 10;
-//int number5 = (number % 10);
-
-//if (number1 == number5 && number2 == number4)
-//{
-//    Console.WriteLine($"Число: {number}, является палиндромом");
-//}
-//else
-//{
-//    Console.WriteLine($"Число: {number}, не является палиндромом");
-//}
+int[] Coup (int N)
+{
+    int[] result = ZeroOneArray(N);
+    int j = Quantity(N) - 1;
+    int b = result[i];
+    for (int i = 0; i < Quantity(N) / 2; i++)
+    {
+        b = result[i];
+        result[i] = result[j];
+        result[j] = b;
+        j = j - 1;
+    }
+        return result;
+}
