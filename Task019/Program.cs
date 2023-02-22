@@ -1,8 +1,7 @@
 ﻿//Console.Clear();
 
 Console.Write("Определение палиндрома, ведите число: ");
-int number = int.Parse(Console.ReadLine()!);
-int N = number;
+int N = int.Parse(Console.ReadLine()!);
 int size = Quantity(N);
 int i = 0;
 int j = size - 1;
@@ -19,12 +18,12 @@ while (i < size / 2)
     }
     else
     {
-        Console.WriteLine($"Число: {number}, не является палиндромом");
+        Console.WriteLine($"Число: {N}, не является палиндромом");
         return;
     }
 
 }
-Console.WriteLine($"Число: {number}, является палиндромом");
+Console.WriteLine($"Число: {N}, является палиндромом");
 
 int Quantity(int N)
 {
